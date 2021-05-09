@@ -18,7 +18,7 @@ class Game {
         this.canvas = canvas; // элемент-canvas (основной слой игры, в котором появляются шары и ветер)
         this.needle = needle; // элемент-canvas (отдельный слой, чтобы ререндер не влиял на основной слой viewport)
         this.gameStateOver = false; // Состояние игры false - игра не окончена
-        this.needlePosX =  this.needle.width / 2; // Начальная позиция игры по центру
+        this.needlePosX =  this.needle.width / 2; // Начальная позиция иглы по центру
         this.timer = timer; // элемент, куда записывается значение this.time
         this.totalScore = totalScore; // элемент, куда мы записываем количество "лопнувших" шаров
         this.missed = missed; // элемент, куда мы записываем количество пропущенных шаров
