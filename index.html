@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+<body>
+
+<h1>Baloon game</h1>
+<div id="scoreTable">
+    <i>Total score: </i><i id="totalScore"></i> <i style="margin-left: 1.5rem">Missed: </i><i id="missedBaloons"></i> <i style="margin-left: 1.5rem">Timer:  </i><i id="timer"></i>
+
+</div>
+
+
+<div id ="viewportContainer" style="display: inline-flex">
+    <canvas style="z-index:1;display: block;margin: 0 auto; border:1px solid #000000" id="viewport" height="600" width="800"></canvas>
+    <canvas style="z-index:2;display: block; margin-left: -800px; height: 10px" id="needle" height="10" width="800"></canvas>
+
+    <button type="button" id="gameBtn" onclick=(onButtonClick()); style="height: 5rem; width: 10rem" class="btn btn-success">Start</button>
+</div>
+
+   <!-- <button type="button" style="margin-left: 30%" class="btn btn-success">Start!</button> -->
+
+<script src ='./baloon.js'></script>
+</body>
+</html>
