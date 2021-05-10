@@ -18,7 +18,7 @@ class Game {
         this.canvas = canvas; // элемент-canvas (основной слой игры, в котором появляются шары и ветер)
         this.needle = needle; // элемент-canvas (отдельный слой, чтобы ререндер не влиял на основной слой viewport)
         this.gameStateOver = false; // Состояние игры false - игра не окончена
-        this.needlePosX =  this.needle.width / 2; // Начальная позиция иглы по центру
+        this.needlePosX =  this.needle.width / 2; // Начальная позиция игры по центру
         this.timer = timer; // элемент, куда записывается значение this.time
         this.totalScore = totalScore; // элемент, куда мы записываем количество "лопнувших" шаров
         this.missed = missed; // элемент, куда мы записываем количество пропущенных шаров
@@ -65,18 +65,8 @@ class Game {
             this.mountNeedle();
         }
 
-        this.redrawBalloons = (event)=>{ // добавление нового шара и рирендер слоя
+        this.addBalloons = (event)=>{ // добавление нового шара
             this.balloonsArr.push(this.balloon());
-            const ctx = this.canvas.getContext('2d');
-            ctx.clearRect(0,0, canvas.width, canvas.height);
-            for (let balloon of this.balloonsArr) {
-                ctx.beginPath();
-                ctx.fillStyle = balloon.color;
-                ctx.arc(balloon.x, balloon.y, balloon.radius, balloon.startAngle, balloon.endAngle);
-                ctx.fill();
-                ctx.stroke();
-                ctx.closePath();
-            }
         }
     }
 
@@ -191,7 +181,7 @@ class Game {
         this.windLeftSide = Math.random();
         this.windLeftSide = Math.random();
         this.canvas.addEventListener('mousemove', this.drawNeedle);
-        this.canvas.addEventListener('newBalloon', this.redrawBalloons);
+        this.canvas.addEventListener('newBalloon', this.addBalloons);
         this.render();
     }
 
@@ -201,7 +191,7 @@ class Game {
         clearInterval(this.spawnIntervalID);
         clearInterval(this.renderID);
         this.canvas.removeEventListener('mousemove',this.drawNeedle);
-        this.canvas.removeEventListener('newBalloon', this.redrawBalloons);
+        this.canvas.removeEventListener('newBalloon', this.addBalloons);
         this.clearViewport();
         this.refresh();
     }
